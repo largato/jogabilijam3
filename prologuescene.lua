@@ -78,4 +78,31 @@ function PrologueScene:endScene()
    sceneManager:setCurrent('game')
 end
 
+function PrologueScene:keyPressed(key, scancode, isRepeat)
+end
+
+function PrologueScene:keyReleased(key, scancode, isRepeat)
+end
+
+function PrologueScene:mousepressed(x, y, button, istouch, presses)
+end
+
+function PrologueScene:mousereleased(x, y, button, istouch, presses)
+end
+
+function PrologueScene:mousemoved(x, y, dx, dy, istouch)
+end
+
+function PrologueScene:wheelmoved(dx, dy)
+end
+
+function PrologueScene:gamepadpressed(joystick, button)
+end
+
+function PrologueScene:gamepadreleased(joystick, button)
+end
+
+function PrologueScene:gamepadaxis(joystick, axis, value)
+end
+
 return PrologueScene

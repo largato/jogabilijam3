@@ -59,4 +59,31 @@ function IntroScene:nextSlide()
    end
 end
 
+function IntroScene:keyPressed(key, scancode, isRepeat)
+end
+
+function IntroScene:keyReleased(key, scancode, isRepeat)
+end
+
+function IntroScene:mousepressed(x, y, button, istouch, presses)
+end
+
+function IntroScene:mousereleased(x, y, button, istouch, presses)
+end
+
+function IntroScene:mousemoved(x, y, dx, dy, istouch)
+end
+
+function IntroScene:wheelmoved(dx, dy)
+end
+
+function IntroScene:gamepadpressed(joystick, button)
+end
+
+function IntroScene:gamepadreleased(joystick, button)
+end
+
+function IntroScene:gamepadaxis(joystick, axis, value)
+end
+
 return IntroScene
