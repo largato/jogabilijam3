@@ -99,7 +99,7 @@ function GameScene:update(dt)
     COUNTDOWN_TIMER = COUNTDOWN_TIMER - dt
 
     if COUNTDOWN_TIMER <= 0 then
-        -- TODO end scene
+        sceneManager:setCurrent("end")
     end
 
     self.eventManager:update(dt)
