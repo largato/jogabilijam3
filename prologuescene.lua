@@ -8,6 +8,7 @@ end
 function PrologueScene:init()
    -- Fonts
    self.title_font = assets.fonts.hemi_head_bd_it(36)
+   self.text_font = assets.fonts.hemi_head_bd_it(36)
 
    self.drawFunction = nil
    self:startTimers()
@@ -30,9 +31,23 @@ function PrologueScene:startTimers()
    Timer.after(2, function() soundManager:play("rain") end)
 
    Timer.after(4, function() self.drawFunction = self.not_hideo end)
+
    Timer.after(7, function() self.drawFunction = self.place end)
    Timer.after(9, function() self.drawFunction = self.place_and_time end)
-   Timer.after(12, function() self:endScene() end)
+
+
+   Timer.after(12, function() self.drawFunction = self.history_1 end)
+   Timer.after(17, function() self.drawFunction = self.history_2 end)
+   Timer.after(22, function() self.drawFunction = self.history_3 end)
+
+   Timer.after(30, function() self.drawFunction = self.blank end)
+
+   Timer.after(33, function() self.drawFunction = self.history_4 end)
+   Timer.after(38, function() self.drawFunction = self.history_5 end)
+   Timer.after(43, function() self.drawFunction = self.history_6 end)
+   Timer.after(48, function() soundManager:play("thunder") end)
+
+   Timer.after(53, function() self:endScene() end)
 end
 
 function PrologueScene:hideo()
@@ -59,19 +74,58 @@ function PrologueScene:place()
 end
 
 function PrologueScene:place_and_time()
-   local text = "SÃO PAULO, BRASIL DO SUL"
-   local text_width = love.graphics.getFont():getWidth(text)
-   love.graphics.setFont(self.title_font)
-   love.graphics.setColor(255, 255, 255)
-   love.graphics.print(text,
-                       (CONF_SCREEN_WIDTH - text_width)/2,
-                       CONF_SCREEN_HEIGHT/2)
+   self:place()
    local text = "1 DE MAIO, 2077"
    local text_width = love.graphics.getFont():getWidth(text)
    love.graphics.setColor(255, 0, 0)
    love.graphics.print(text,
                        (CONF_SCREEN_WIDTH - text_width)/2,
                        (CONF_SCREEN_HEIGHT/2) + 45)
+end
+
+function PrologueScene:history_1()
+   love.graphics.setFont(self.text_font)
+   love.graphics.setColor(1, 1, 1)
+   local text = "Após 16 anos de guerra de separação contra seus ex-compatriotas do norte,\no Brasil do Sul padece de problemas sociais assombrosos."
+   love.graphics.print(text, 100, 200)
+end
+
+function PrologueScene:history_2()
+   self:history_1()
+   local text = "Com o descréscimo populacional, perda de mão-de-obra e\nescalada nos custos de vida, o país enfrenta uma crise jamais vista."
+   love.graphics.print(text, 250, 400)
+end
+
+function PrologueScene:history_3()
+   self:history_2()
+   local text = "Buscando por mão-de-obra barata, o presidente Enzo Bilnosliro, \nneto do Duque, organiza minorias em campos de trabalho. É a SOLUÇÃO FINAL."
+   love.graphics.print(text, 400, 600)
+end
+
+function PrologueScene:blank()
+end
+
+function PrologueScene:history_4()
+   love.graphics.setFont(self.text_font)
+   love.graphics.setColor(1, 1, 1)
+   local text = "Com apoio clandestino da URSENE, o quilombo Casa Verde\n é um dos últimos focos de resistência. \n\n"
+   love.graphics.print(text, 100, 300)
+end
+
+function PrologueScene:history_5()
+   self:history_4()
+   local text = "Após meses de guerrilha urbana, as autoridades \ntentam esmagar os rebeldes de uma vez por todas."
+   love.graphics.print(text, 250, 550)
+end
+
+function PrologueScene:history_6()
+   local text = "Hoje acontece o levante derradeiro."
+   local text_width = love.graphics.getFont():getWidth(text)
+   love.graphics.setFont(self.title_font)
+   love.graphics.setColor(255, 255, 255)
+   love.graphics.print(text,
+                       (CONF_SCREEN_WIDTH - text_width)/2,
+                       CONF_SCREEN_HEIGHT/2)
 end
 
 function PrologueScene:endScene()
