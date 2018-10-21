@@ -17,7 +17,7 @@ function MenuScene:init()
    self.menuItemHeight = self.fontHeight * 2
    self.menuHeight = self.menuItemHeight * #self.items
    self.x = CONF_SCREEN_WIDTH / 2 - self.menuWidth / 2
-   self.y = CONF_SCREEN_HEIGHT / 2 - self.menuHeight / 2
+   self.y = 800
    self.background = love.graphics.newImage('assets/images/bg_menu.png')
    self.buttonOnImage = love.graphics.newImage('assets/images/button_on.png')
    self.buttonOffImage = love.graphics.newImage('assets/images/button_off.png')
