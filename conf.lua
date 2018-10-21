@@ -1,9 +1,9 @@
 function love.conf(t)
   t.releases = {
-    title = "jogabilijam3",
-    package = "jogabilijam3",
-    loveVersion = nil,
-    version = "0.1",
+    title = "Zona de Conflito",
+    package = "zonadeconflito",
+    loveVersion = "11.1",
+    version = "0.2",
     author = "Luiz Cavalcanti, Roger Zanoni, Emiliano Firmino, Felipe Fonseca, Fabiano Marinho",
     email = "cavalcanti.luiz@gmail.com, rogerzanoni@gmail.com, emiliano.firmino@gmail.com, cabralff@gmail.com, fabiano.box@gmail.com",
     description = "Jogabilijam3 entry",
