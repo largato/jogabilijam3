@@ -22,6 +22,7 @@ local IntroScene = require "introscene"
 local GameScene = require "gamescene"
 local EndScene = require "endscene"
 -- local DialogScene = require "dialogscene"
+local PrologueScene = require "prologuescene"
 local SettingsScene = require "settingsscene"
 local CreditsScene = require "creditsscene"
 
@@ -40,13 +41,10 @@ function love.load()
    soundManager:add("thunder", "assets/sounds/thunder.wav", true)
    soundManager:playLoop("menu")
 
-   -- local map = Map("assets/maps/green_valley.lua")
    sceneManager:add("menu", MenuScene())
    sceneManager:add("intro", IntroScene())
-   -- sceneManager:add("battle", GameScene(Camera(), map))
+   sceneManager:add("prologue", PrologueScene())
    sceneManager:add("game", GameScene())
-   -- sceneManager:add("PlayerWon", EndScene("Jogador"))
-   -- sceneManager:add("EnemyWon", EndScene("Inimigo"))
    sceneManager:add("end", EndScene())
    sceneManager:add("settings", SettingsScene())
    sceneManager:add("credits", CreditsScene())
