@@ -43,10 +43,10 @@ function CreditsScene:draw()
 
    love.graphics.setColor(self.textColor)
    love.graphics.setFont(self.textFont)
-   love.graphics.print("EMILIANO FIRMINO", first_column, 350)
-   love.graphics.print("FELIPE FONSECA", first_column, 390)
-   love.graphics.print("LUIZ CAVALCANTI", first_column, 430)
-   love.graphics.print("ROGER ZANONI", first_column, 470)
+   love.graphics.print("Emiliano Firmino", first_column, 350)
+   love.graphics.print("Felipe Fonseca", first_column, 390)
+   love.graphics.print("Luiz Cavalcanti", first_column, 430)
+   love.graphics.print("Roger Zanoni", first_column, 470)
 
    -- Arte & UI Design
    love.graphics.setColor(self.subtitleColor)
@@ -55,7 +55,7 @@ function CreditsScene:draw()
 
    love.graphics.setColor(self.textColor)
    love.graphics.setFont(self.textFont)
-   love.graphics.print("FABIANO MARINHO", first_column, 650)
+   love.graphics.print("Fabiano Marinho", first_column, 650)
 
    -- Musica
    love.graphics.setColor(self.subtitleColor)
@@ -73,11 +73,11 @@ function CreditsScene:draw()
 
    love.graphics.setColor(self.textColor)
    love.graphics.setFont(self.textFont)
-   love.graphics.print("EMILIANO FIRMINO", second_column, 350)
-   love.graphics.print("FABIANO MARINHO", second_column, 390)
-   love.graphics.print("FELIPE FONSECA", second_column, 430)
-   love.graphics.print("LUIZ CAVALCANTI", second_column, 470)
-   love.graphics.print("ROGER ZANONI", second_column, 510)
+   love.graphics.print("Emiliano Firmino", second_column, 350)
+   love.graphics.print("Fabiano Marinho", second_column, 390)
+   love.graphics.print("Felipe Fonseca", second_column, 430)
+   love.graphics.print("Luiz Cavalcanti", second_column, 470)
+   love.graphics.print("Roger Zanoni", second_column, 510)
 
    -- Roteiro
    love.graphics.setColor(self.subtitleColor)
@@ -86,8 +86,8 @@ function CreditsScene:draw()
 
    love.graphics.setColor(self.textColor)
    love.graphics.setFont(self.textFont)
-   love.graphics.print("FABIANO MARINHO", second_column, 650)
-   love.graphics.print("LUIZ CAVALCANTI", second_column, 690)
+   love.graphics.print("Fabiano Marinho", second_column, 650)
+   love.graphics.print("Luiz Cavalcanti", second_column, 690)
 
    -- Roteiro
    love.graphics.setColor(self.subtitleColor)
