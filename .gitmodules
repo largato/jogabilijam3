@@ -13,3 +13,6 @@
 [submodule "libs/cargo"]
 	path = libs/cargo
 	url = https://github.com/bjornbytes/cargo.git
+[submodule "libs/moonshine"]
+	path = libs/moonshine
+	url = https://github.com/vrld/moonshine.git
