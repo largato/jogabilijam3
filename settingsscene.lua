@@ -26,7 +26,7 @@ function SettingsScene:draw()
    menuItemHeight = fontHeight * 2
    menuHeight = menuItemHeight * #self.items
    x = CONF_SCREEN_WIDTH / 2 - menuWidth / 2
-   y = CONF_SCREEN_HEIGHT / 2 - menuHeight / 2
+   y = 800
    buttonScaleX = menuWidth / self.buttonOnImage:getWidth()
    buttonScaleY = menuItemHeight / self.buttonOnImage:getHeight()
 
@@ -63,9 +63,9 @@ function SettingsScene:keyPressed(key, scancode, isRepeat)
    elseif key=="return" and not isRepeat then
       self:selectItem()
    elseif key=="left" and not isRepeat then
-      self:previousValue()
-   elseif key=="right" and not isRepeat then
       self:nextValue()
+   elseif key=="right" and not isRepeat then
+      self:previousValue()
    end
 end
 
