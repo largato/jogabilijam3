@@ -33,9 +33,15 @@ function EndScene:startTimers()
    Timer.after(15, function() soundManager:play("thunder") end)
    Timer.after(15, function() self.drawFunction = self.antifa end)
 
-   Timer.after(20, function() self.drawFunction = self.thank end)
+   Timer.after(20, function() self.drawFunction = self.thank_1 end)
+   Timer.after(20.1, function() self.drawFunction = self.thank_2 end)
+   Timer.after(20.15, function() self.drawFunction = self.thank_1 end)
+   Timer.after(21.6, function() self.drawFunction = self.thank_2 end)
+   Timer.after(22, function() self.drawFunction = self.thank_1 end)
+   Timer.after(23, function() self.drawFunction = self.thank_2 end)
+   Timer.after(23.5, function() self.drawFunction = self.thank_1 end)
 
-   Timer.after(25, function() self:endScene() end)
+   Timer.after(27, function() self:endScene() end)
 end
 
 function EndScene:maiakovski()
@@ -45,18 +51,30 @@ function EndScene:maiakovski()
    love.graphics.print(text, 550, 300)
 end
 
-function EndScene:thank()
+function EndScene:thank_1()
    local text = "OBRIGADO POR JOGAR"
-   local text_width = love.graphics.getFont():getWidth(text)
    love.graphics.setFont(self.title_font)
    love.graphics.setColor(255, 255, 255)
-   love.graphics.print(text,
-                       (CONF_SCREEN_WIDTH - text_width)/2,
-                       CONF_SCREEN_HEIGHT/2)
+   love.graphics.printf(text,
+                        780,
+                        CONF_SCREEN_HEIGHT/2,
+                        CONF_SCREEN_WIDTH,
+                        "left")
+end
+
+function EndScene:thank_2()
+   local text = "OBRIGADO POR LUTAR"
+   love.graphics.setFont(self.title_font)
+   love.graphics.setColor(255, 255, 255)
+   love.graphics.printf(text,
+                        780,
+                        CONF_SCREEN_HEIGHT/2,
+                        CONF_SCREEN_WIDTH,
+                        "left")
 end
 
 function EndScene:antifa()
-   local text = "Uma homenagem à"
+   local text = "Junte-se à luta"
    local text_width = love.graphics.getFont():getWidth(text)
    love.graphics.setFont(self.title_font)
    love.graphics.setColor(255, 255, 255)
