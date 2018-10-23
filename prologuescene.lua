@@ -86,19 +86,24 @@ end
 function PrologueScene:history_1()
    love.graphics.setFont(self.text_font)
    love.graphics.setColor(1, 1, 1)
-   local text = "Após 16 anos de guerra de separação contra seus ex-compatriotas do norte,\no Brasil do Sul padece de problemas sociais assombrosos."
+   local text = "Após 16 anos de guerra de separação contra seus ex-compatriotas do norte,\no Brasil do Sul padece de graves problemas sociais."
    love.graphics.print(text, 100, 200)
 end
 
 function PrologueScene:history_2()
    self:history_1()
-   local text = "Com o decréscimo populacional, perda de mão-de-obra e\nescalada nos custos de vida, o país enfrenta uma crise jamais vista."
+   local text = "Com o decréscimo populacional, perda de mão-de-obra e\nmercado consumidor, o país enfrenta uma crise jamais vista."
    love.graphics.print(text, 250, 400)
 end
 
 function PrologueScene:history_3()
    self:history_2()
-   local text = "Buscando por mão-de-obra barata, o presidente Enzo Bilnosliro, \nneto do Duque, organiza minorias em campos de trabalho. É a SOLUÇÃO FINAL."
+   local text = {
+      {1,1,1}, "Buscando mão-de-obra barata, o presidente ",
+      {0,1,0}, "Enzo ",
+      {1,1,0}, "Bilnosliro",
+      {1,1,1}, ",\nneto do Duque, organiza minorias em campos de trabalho.\n\nÉ a SOLUÇÃO FINAL."
+   }
    love.graphics.print(text, 400, 600)
 end
 
@@ -108,7 +113,11 @@ end
 function PrologueScene:history_4()
    love.graphics.setFont(self.text_font)
    love.graphics.setColor(1, 1, 1)
-   local text = "Com apoio clandestino da URSENE, o quilombo Casa Verde\n é um dos últimos focos de resistência. \n\n"
+   local text = {
+      {1,1,1}, "Com apoio clandestino da ",
+      {1,0,0}, "URSENE",
+      {1, 1, 1}, ", o quilombo Casa Verde\né um dos últimos focos de resistência."
+   }
    love.graphics.print(text, 100, 300)
 end
 
