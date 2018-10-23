@@ -82,6 +82,7 @@ function Character:update(dt)
       self.sprite.flipX = math.sin(polar.x) < 0
    end
    self.sprite:update(dt)
+   self:keepDistance()
 end
 
 function Character:draw(ox, oy)
@@ -114,6 +115,17 @@ function Character:getFriendsList()
       return gameworld_officers
    end
 
+end
+
+function Character:keepDistance()
+   for i, friend in ipairs(self:getFriendsList()) do
+      if friend ~= self and (not friend:isDead()) then
+         local desired_velocity = steer.keepDistance(self.position, friend.position, self.box_width * 1.25) * self.max_velocity
+         local steering = desired_velocity - self.velocity
+         self.velocity = self.velocity + steering
+         self.position = self.position + self.velocity
+      end
+   end
 end
 
 return Character
