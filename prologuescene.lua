@@ -92,7 +92,7 @@ end
 
 function PrologueScene:history_2()
    self:history_1()
-   local text = "Com o descréscimo populacional, perda de mão-de-obra e\nescalada nos custos de vida, o país enfrenta uma crise jamais vista."
+   local text = "Com o decréscimo populacional, perda de mão-de-obra e\nescalada nos custos de vida, o país enfrenta uma crise jamais vista."
    love.graphics.print(text, 250, 400)
 end
 
