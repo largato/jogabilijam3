@@ -10,7 +10,7 @@ local HEALING_FRAMES = 60
 function Medic:new(x, y, life, damage, loyalty)
    Medic.super.new(self, x, y, life, damage, loyalty)
    self.state = STATE_IDLE
-   self.patient = nil
+   self.target = nil
 
    -- Motion
    self.velocity = vector(0, 0)
@@ -18,7 +18,7 @@ function Medic:new(x, y, life, damage, loyalty)
 
    -- Distances
    self.sight_distance = 1000
-   self.healing_distance = 20
+   self.attack_distance = 20 -- actually, healling distance
 
    -- Timers
    self.healing_timer = 0
@@ -63,49 +63,35 @@ function Medic:update(dt)
       self.dead_for = self.dead_for + dt
    end
 
-   self:clamp()
+   -- self:clamp()
 end
 
 function Medic:look()
-   self:seek_patient()
-   if not (self.patient == nil) then
+   self:seek_target()
+   if not (self.target == nil) then
       self:changeState(STATE_MOVING)
-      self.sprite.flipX = self.patient.position.x < self.position.x
-   end
-end
-
-function Medic:move()
-   if not (self.patient==nil) then
-      local distance = self.position:dist(self.patient.position)
-      if distance > self.healing_distance then
-         local desired_velocity = steer.seek(self.position, self.patient.position) * self.max_velocity
-         local steering = desired_velocity - self.velocity
-         self.velocity = self.velocity + steering
-         self.position = self.position + self.velocity
-      else
-         self:changeState(STATE_HEALING)
-      end
+      self.sprite.flipX = self.target.position.x < self.position.x
    end
 end
 
 function Medic:heal()
    if self.healing_timer >= HEALING_FRAMES then
       self.healing_timer = 0
-      self.patient:receiveDamage(self.damage)
+      self.target:receiveDamage(self.damage)
       self:changeState(STATE_IDLE)
    else
       self.healing_timer = self.healing_timer + 1
    end
 end
 
-function Medic:seek_patient()
-   self.patient = nil
+function Medic:seek_target()
+   self.target = nil
    local closer = self.sight_distance
    for i, char in ipairs(self:getFriendsList()) do
       local distance = self.position:dist(char.position)
       if not(char==self) and distance < closer and not char:isDead() and char:isHurt() and char:isHealable() then
          closer = distance
-         self.patient = char
+         self.target = char
          print("Patient found: " .. distance)
       end
    end

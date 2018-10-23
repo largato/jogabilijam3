@@ -18,7 +18,7 @@ local COOLDOWN_TANK = 25
 -- UI constants
 local PLACEMENT_WIDTH = CONF_SCREEN_WIDTH / 16
 local PLACEMENT_HEIGHT = CONF_SCREEN_HEIGHT / 9
-local PLACEMENT_ROWS = 4
+local PLACEMENT_ROWS = 8
 local PLACEMENT_MOVE_INTERVAL = 0.1
 
 -- Power bar
@@ -50,11 +50,14 @@ function GameScene:new()
                                     CONF_SCREEN_HEIGHT / PLACEMENT_HEIGHT / 2 * PLACEMENT_HEIGHT)
    -- Fonts
    self.unit_card_font = assets.fonts.hemi_head_bd_it(18)
+
+   -- Placement status control
    self.up_pressed = false
    self.down_pressed = false
    self.left_pressed = false
    self.right_pressed = false
    self.placement_elapsed = 0.0
+   self.placement_collided = false
 
    -- Assets
    self.img_button_a = love.graphics.newImage('assets/images/xb_a.png')
@@ -209,23 +212,33 @@ function GameScene:updatePlacement(dt)
             self:movePlacementRight()
         end
     end
+
+    -- Check collision with player's chars
+    self.placement_collided = false
+    local q = Quad(self.placement_position.x, self.placement_position.y + (PLACEMENT_HEIGHT/2), PLACEMENT_WIDTH, PLACEMENT_HEIGHT)
+    for i, char in ipairs(gameworld_demonstrators) do
+       if q:collide(char.bbox) then
+          self.placement_collided = true
+          break
+       end
+    end
 end
 
 function GameScene:gamepadpressed(joystick, button)
    if button == "a" then
-      if self:allowNewMelee() then
+      if self:allowNewMelee() and not self.placement_collided then
          self:placeUnit(UNIT_TYPE_MELEE)
       end
    elseif button == "b" then
-      if self:allowNewGunner() then
+      if self:allowNewGunner() and not self.placement_collided then
          self:placeUnit(UNIT_TYPE_GUNNER)
       end
    elseif button == "x" then
-      if self:allowNewMedic() then
+      if self:allowNewMedic() and not self.placement_collided then
          self:placeUnit(UNIT_TYPE_MEDIC)
       end
    elseif button == "y" then
-      if self:allowNewTank() then
+      if self:allowNewTank() and not self.placement_collided then
          self:placeUnit(UNIT_TYPE_TANK)
       end
    end
@@ -369,6 +382,11 @@ function GameScene:drawPlacementCursor()
    corner_y = self.placement_position.y + PLACEMENT_HEIGHT
    love.graphics.line(corner_x, corner_y, corner_x - 40, corner_y)
    love.graphics.line(corner_x, corner_y, corner_x, corner_y - 40)
+
+   if self.placement_collided then
+      love.graphics.setColor(1, 0, 0, 0.5)
+      love.graphics.rectangle("fill", self.placement_position.x, self.placement_position.y, PLACEMENT_WIDTH, PLACEMENT_HEIGHT)
+   end
 end
 
 function GameScene:drawPowerBar()
