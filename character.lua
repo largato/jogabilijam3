@@ -10,6 +10,7 @@ Character.LOYALTY_ENEMY = "enemy"
 Character.LOYALTY_ALLY  = "ally"
 
 Character.VANISH_TIME = 3
+Character.MAX_FRAMES_STUCK = 10
 
 STATE_IDLE = 'idle'
 STATE_MOVING = 'moving'
@@ -25,6 +26,7 @@ function Character:new(x, y, life, damage, loyalty)
    self.loyalty = loyalty
    self.bbox = Quad(x, y, 120, 30)
    self.dead_for = 0
+   self.frames_stuck = 0
 end
 
 function Character:isDead()
@@ -125,10 +127,14 @@ function Character:move()
          local friends_list = self:getFriendsList()
          for i, friend in ipairs(friends_list) do
             if self ~= friend and self.bbox:collide(friend.bbox) then
-               return
+               self.frames_stuck = self.frames_stuck + 1
+               if self.frames_stuck < Character.MAX_FRAMES_STUCK then
+                  return
+               end
             end
          end
          self.position = new_position
+         self.frames_stuck = 0
       else
          self:changeState(STATE_LOADING)
       end
