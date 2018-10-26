@@ -13,7 +13,7 @@ function Melee:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 1.0
+   self.max_velocity = 1.5
 
    -- Distances
    self.sight_distance = 2000

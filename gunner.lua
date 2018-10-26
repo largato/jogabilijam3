@@ -13,7 +13,7 @@ function Gunner:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 0.8
+   self.max_velocity = 1.0
 
    -- Distances
    self.sight_distance = 1000

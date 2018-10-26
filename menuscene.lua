@@ -106,7 +106,7 @@ end
 
 function MenuScene:selectItem()
    self:itemSelected(self.line)
-   soundManager:play("accept")
+   -- soundManager:play("accept")
 end
 
 return MenuScene

@@ -16,7 +16,7 @@ function Tank:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 0.2
+   self.max_velocity = 0.4
 
    -- Distances
    self.sight_distance = 2000
