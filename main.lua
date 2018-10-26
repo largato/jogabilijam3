@@ -7,6 +7,7 @@ CONF_SCREEN_HEIGHT = 1080
 
 Object = require "libs/classic/classic"
 Scene = require "scene"
+Quad = require "quad"
 
 require "steer"
 require "utils"

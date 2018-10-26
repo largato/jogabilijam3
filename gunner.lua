@@ -80,21 +80,6 @@ function Gunner:look()
    end
 end
 
-function Gunner:move()
-   self:seek_target()
-   if not (self.target==nil) then
-      local distance = self.position:dist(self.target.position)
-      if distance > self.attack_distance then
-         local desired_velocity = steer.seek(self.position, self.target.position) * self.max_velocity
-         local steering = desired_velocity - self.velocity
-         self.velocity = self.velocity + steering
-         self.position = self.position + self.velocity
-      else
-         self:changeState(STATE_LOADING)
-      end
-   end
-end
-
 function Gunner:load()
    if self.loading_timer >= LOAD_FRAMES then
       self.loading_timer = 0

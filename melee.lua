@@ -78,21 +78,6 @@ function Melee:look()
    end
 end
 
-function Melee:move()
-   self:seek_target()
-   if not (self.target==nil) then
-      local distance = self.position:dist(self.target.position)
-      if distance > self.attack_distance then
-         local desired_velocity = steer.seek(self.position, self.target.position) * self.max_velocity
-         local steering = desired_velocity - self.velocity
-         self.velocity = self.velocity + steering
-         self.position = self.position + self.velocity
-      else
-         self:changeState(STATE_LOADING)
-      end
-   end
-end
-
 function Melee:load()
    if self.loading_timer >= LOAD_FRAMES then
       self.loading_timer = 0
@@ -117,10 +102,7 @@ function Melee:seek_target()
    self.target = nil
    local closer = self.sight_distance
 
-   local enemy_list = gameworld_demonstrators
-   if self.loyalty == Character.LOYALTY_USER then
-       enemy_list = gameworld_officers
-   end
+   local enemy_list = self:getEnemiesList()
 
    for i, enemy in ipairs(enemy_list) do
       local distance = self.position:dist(enemy.position)
