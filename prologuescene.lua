@@ -37,17 +37,16 @@ function PrologueScene:startTimers()
 
 
    Timer.after(12, function() self.drawFunction = self.history_1 end)
-   Timer.after(17, function() self.drawFunction = self.history_2 end)
-   Timer.after(22, function() self.drawFunction = self.history_3 end)
+   Timer.after(19, function() self.drawFunction = self.history_2 end)
+   Timer.after(26, function() self.drawFunction = self.history_3 end)
 
-   Timer.after(30, function() self.drawFunction = self.blank end)
+   Timer.after(33, function() self.drawFunction = self.blank end)
 
-   Timer.after(33, function() self.drawFunction = self.history_4 end)
-   Timer.after(38, function() self.drawFunction = self.history_5 end)
-   Timer.after(43, function() self.drawFunction = self.history_6 end)
-   Timer.after(43, function() soundManager:play("thunder") end)
+   Timer.after(36, function() self.drawFunction = self.history_4 end)
+   Timer.after(43, function() self.drawFunction = self.history_5 end)
+   Timer.after(50, function() self.drawFunction = self.history_6 end)
 
-   Timer.after(48, function() self:endScene() end)
+   Timer.after(53, function() self:endScene() end)
 end
 
 function PrologueScene:hideo()
