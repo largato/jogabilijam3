@@ -125,7 +125,6 @@ function Tank:seek_target()
       if distance < closer and (not dem:isDead()) then
          closer = distance
          self.target = dem
-         print("Target found!" .. distance)
       end
    end
 end

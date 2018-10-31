@@ -109,7 +109,6 @@ function Melee:seek_target()
       if distance < closer and (not enemy:isDead()) then
          closer = distance
          self.target = enemy
-         print("Target found!" .. distance)
       end
    end
 end

@@ -92,7 +92,6 @@ function Medic:seek_target()
       if not(char==self) and distance < closer and not char:isDead() and char:isHurt() and char:isHealable() then
          closer = distance
          self.target = char
-         print("Patient found: " .. distance)
       end
    end
 end

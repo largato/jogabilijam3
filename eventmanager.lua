@@ -16,24 +16,24 @@ function EventManager:deploy()
       Timer.after(event.time,
          function()
             local unit = event.unit(event.x, event.y, event.life, event.damage, Character.LOYALTY_ENEMY)
-            local overlap = false
+            -- local overlap = false
 
-            for j, officer in ipairs(gameworld_officers) do
-               local u = vector(unit.bbox.x, unit.bbox.y)
-               local o = vector(officer.bbox.x, officer.bbox.y)
-               local d = u:dist(o)
-               overlap = d < unit.bbox.w
+            -- for j, officer in ipairs(gameworld_officers) do
+            --    local u = vector(unit.bbox.x, unit.bbox.y)
+            --    local o = vector(officer.bbox.x, officer.bbox.y)
+            --    local d = u:dist(o)
+            --    overlap = d < unit.bbox.w
 
-               if overlap then
-                  break
-               end
-            end
+            --    if overlap then
+            --       break
+            --    end
+            -- end
 
-            if not overlap then
+            -- if not overlap then
               table.insert(gameworld_officers, unit)
-            else
-              print('skip spawn enemy because overlap')
-            end
+            -- else
+            --   print('skip spawn enemy because overlap')
+            -- end
          end)
    end
 end
