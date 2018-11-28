@@ -13,7 +13,7 @@ function Gunner:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 0.8
+   self.max_velocity = 1.0
 
    -- Distances
    self.sight_distance = 1000
@@ -96,7 +96,7 @@ function Gunner:attack()
       self:shoot()
       self.target:receiveDamage(self.damage)
       self:changeState(STATE_IDLE)
-      soundManager:playSfx("laser")
+      soundManager:playSfx("laser", 0.2)
    else
       self.attacking_timer = self.attacking_timer + 1
    end
@@ -121,7 +121,6 @@ function Gunner:seek_target()
       if distance < closer and (not dem:isDead()) then
          closer = distance
          self.target = dem
-         print("Target found!" .. distance)
       end
    end
 end

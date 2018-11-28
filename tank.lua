@@ -16,7 +16,7 @@ function Tank:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 0.2
+   self.max_velocity = 0.4
 
    -- Distances
    self.sight_distance = 2000
@@ -100,7 +100,7 @@ function Tank:attack()
       self:shoot()
       self.target:receiveDamage(self.damage)
       self:changeState(STATE_IDLE)
-      soundManager:playSfx("tanklaser")
+      soundManager:playSfx("tanklaser", 0.5)
    else
       self.attacking_timer = self.attacking_timer + 1
    end
@@ -125,7 +125,6 @@ function Tank:seek_target()
       if distance < closer and (not dem:isDead()) then
          closer = distance
          self.target = dem
-         print("Target found!" .. distance)
       end
    end
 end

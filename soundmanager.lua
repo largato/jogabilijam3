@@ -12,20 +12,24 @@ function SoundManager:add(name, path, static)
    end
 end
 
-function SoundManager:playLoop(name)
+function SoundManager:playLoop(name, volume)
    local source = self.sounds[name]
    source:setLooping(true)
+   source:setVolume(volume or 1)
    source:play()
 end
 
-function SoundManager:play(name)
+function SoundManager:play(name, volume)
    local source = self.sounds[name]
    source:stop()
+
+   source:setVolume(volume or 1)
    source:play()
 end
 
-function SoundManager:playSfx(name)
+function SoundManager:playSfx(name, volume)
    local source = self.sounds[name]
+   source:setVolume(volume or 1)
    source:clone():play()
 end
 

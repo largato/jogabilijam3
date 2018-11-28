@@ -10,7 +10,7 @@ Character.LOYALTY_ENEMY = "enemy"
 Character.LOYALTY_ALLY  = "ally"
 
 Character.VANISH_TIME = 3
-Character.MAX_FRAMES_STUCK = 10
+Character.MAX_FRAMES_STUCK = 5
 
 STATE_IDLE = 'idle'
 STATE_MOVING = 'moving'
@@ -59,7 +59,6 @@ end
 
 
 function Character:changeState(state)
-   print("[state] " .. self.state .. " -> " .. state)
    if self.sprite.animations[state] ~= nil then
       self.sprite:switch(state)
    end

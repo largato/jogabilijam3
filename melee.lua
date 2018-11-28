@@ -13,7 +13,7 @@ function Melee:new(x, y, life, damage, loyalty)
 
    -- Motion
    self.velocity = vector(0, 0)
-   self.max_velocity = 1.0
+   self.max_velocity = 1.5
 
    -- Distances
    self.sight_distance = 2000
@@ -92,7 +92,7 @@ function Melee:attack()
       self.attacking_timer = 0
       self.target:receiveDamage(self.damage)
       self:changeState(STATE_IDLE)
-      soundManager:playSfx("melee")
+      soundManager:playSfx("melee", 0.2)
    else
       self.attacking_timer = self.attacking_timer + 1
    end
@@ -109,7 +109,6 @@ function Melee:seek_target()
       if distance < closer and (not enemy:isDead()) then
          closer = distance
          self.target = enemy
-         print("Target found!" .. distance)
       end
    end
 end

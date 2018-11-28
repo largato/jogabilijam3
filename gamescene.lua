@@ -33,7 +33,7 @@ UNIT_TYPE_GUNNER = 'gunner'
 UNIT_TYPE_MEDIC = 'medic'
 UNIT_TYPE_TANK = 'tank'
 
-local COUNTDOWN_TIMER = 300.0
+local COUNTDOWN_TIMER = 180.0
 
 GameScene = Scene:extend()
 
