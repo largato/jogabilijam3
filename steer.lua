@@ -15,6 +15,14 @@ function arrival(current_position, target_position, arrivalRadius)
     end
 end
 
+function keepDistance(current_position, target_position, desired_distance)
+    local distance = (target_position - current_position):dist()
+    local desired = current_position
+    if distance < desired_distance then
+       desired = current_position + distance - target_position;
+    return desired:normalized()
+end
+
 function wander(current_position, current_velocity, wander_distance, wander_radius)
     local direction = current_velocity:normalized()
     local circle_center = current_position + direction * wander_distance
